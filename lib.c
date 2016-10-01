@@ -28,8 +28,8 @@ static void do_evil_stuff(void)
 	e_uid = geteuid();
 	e_gid = getegid();
 
-	printf("Doing evil stuff as UID: %lu, GID: %lu!\n",
-	       (unsigned long int)e_uid, (unsigned long int)e_gid);
+	fprintf(stderr, "Doing evil stuff as UID: %lu, GID: %lu!\n",
+		(unsigned long int)e_uid, (unsigned long int)e_gid);
 }
 
 void exec_bin_bash(void)
