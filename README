@@ -26,7 +26,7 @@ eric@titan:~/src/ld-preload-evil$
 
 SO FAR, NO ESCALATION FROM A SUID BINARY
 ----------------------------------------
-#it seems that LD_PRELOAD is not used with SUID root binaries:
+# on one system, it seems that LD_PRELOAD is not used with SUID root binaries:
 eric@titan:~/src/ld-preload-evil$ sudo chown root:root ./main
 eric@titan:~/src/ld-preload-evil$ sudo chmod 6777 ./main
 eric@titan:~/src/ld-preload-evil$ ls -l main
@@ -36,6 +36,16 @@ foobar
 eric@titan:~/src/ld-preload-evil$ LD_PRELOAD=./lib.so.1 ./main
 foobar
 eric@titan:~/src/ld-preload-evil$
+
+# on another, it seems as if using LD_PRELOAD removes the SUIDness:
+eric@hinney:~/src/ld-preload-evil$ sudo chown root:root ./main
+eric@hinney:~/src/ld-preload-evil$ sudo chmod 6777 ./main
+eric@hinney:~/src/ld-preload-evil$ ls -l main
+-rwsrwsrwx 1 root root 11110 Oct  1 13:21 main
+eric@hinney:~/src/ld-preload-evil$ LD_PRELOAD=./lib.so.1 ./main
+Doing evil stuff as UID: 1000, GID: 1000!
+foobar
+eric@hinney:~/src/ld-preload-evil$
 
 
 LICENSE
