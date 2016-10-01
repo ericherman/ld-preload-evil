@@ -1,0 +1,28 @@
+This repo is my (Eric Herman) workbook for exploring how LD_PRELOAD can
+be used to change the behavior of programs.
+
+So far I have learned that it is trivial to do "small evil" things, like
+changing behavior, but I do not yet see how to do "big evil" things,
+such as privlige escallation.
+
+
+EXAMPLE USAGE
+-------------
+eric@titan:~/src/ld-preload-evil$ sudo chown root:root ./main
+eric@titan:~/src/ld-preload-evil$ sudo chmod 6777 ./main
+eric@titan:~/src/ld-preload-evil$ ls -l main
+-rwsrwsrwx 1 root root 11110 Oct  1 12:15 main
+eric@titan:~/src/ld-preload-evil$ ./main
+foobar
+eric@titan:~/src/ld-preload-evil$ LD_PRELOAD=./lib.so.1 ./main
+Doing evil stuff as UID: 1000, GID: 1000!
+foobar
+eric@titan:~/src/ld-preload-evil$
+
+
+LICENSE
+-------
+This is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
