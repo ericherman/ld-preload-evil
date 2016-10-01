@@ -30,11 +30,11 @@ test: test-$(LIB)
 	./test-$(LIB)
 
 check: main
-	echo sudo chown root:root ./main
-	echo sudo chmod 6777 ./main
-	ls -l main
+	# sudo chown root:root ./main
+	# sudo chmod 6777 ./main
+	# ls -l main
 	./main
-	LD_PRELOAD=./$(SO_NAME).1 ./main
+	LD_PRELOAD=$(PWD)/$(SO_NAME).1 ./main
 
 clean:
 	rm -f *.o test-$(LIB) $(LIB).$(SHAREDEXT).1 main *~
