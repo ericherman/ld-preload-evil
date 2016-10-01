@@ -8,10 +8,23 @@ So far, I have learned that it is trivial to do "small evil" things,
 like changing behavior, but I do not yet see how to do "big evil"
 things, such as privilege escalation.
 
-I have found various web pages asserting that if effective UID != UID
-that LD_PRELOAD is ignored, but experimentally, I see two kinds of
-results (PRELOAD ignored and SUID ignored); I do not yet how this is
-enforced or where it is enforced.
+Experimentally, I see two kinds of prevention (PRELOAD ignored and SUID
+ignored); I do not yet have a very full picture of how this is enforced
+or where it is enforced.
+
+My version of "man 8 ld-linix" says:
+
+	For set-user-ID/set-group-ID ELF  binaries, preload
+	pathnames containing slashes are ignored, and libraries in
+	the standard search directories are loaded only if the
+	set-user-ID permission bit is enabled on the library file.
+
+In glibc/elf/rtld.c we see:
+1484       /* The LD_PRELOAD environment variable gives list of libraries
+1485          separated by white space or colons that are loaded before the
+1486          executable's dependencies and prepended to the global scope
+1487          list.  If the binary is running setuid all elements
+1488          containing a '/' are ignored since it is insecure.  */
 
 To me, LD_PRELOAD appears to be a great tool for legitimate modifying
 and instrumenting behavior, and does not seem to greatly widen risk of a
