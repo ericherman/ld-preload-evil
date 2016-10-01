@@ -51,7 +51,7 @@ eric@titan:~/src/ld-preload-evil$
 
 
 NO ESCALATION FROM A SUID BINARY
-----------------------------------------
+--------------------------------
 # on one system, it seems that LD_PRELOAD is not used with SUID root binaries:
 eric@titan:~/src/ld-preload-evil$ sudo chown root:root ./main
 eric@titan:~/src/ld-preload-evil$ sudo chmod 6777 ./main
