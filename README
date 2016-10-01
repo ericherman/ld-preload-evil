@@ -12,7 +12,7 @@ eric@titan:~/src/ld-preload-evil$ make
 gcc -std=c89 -g -Wall -Wextra -Werror -Wpedantic -c -fPIC lib.c -o lib.o
 gcc -std=c89 -g -Wall -Wextra -Werror -Wpedantic -fPIC -shared -Wl,-soname,lib.so -o lib.so.1 lib.o
 gcc -std=c89 -g -Wall -Wextra -Werror -Wpedantic -c -fPIC test-lib.c -o test-lib.o
-gcc -std=c89 -g -Wall -Wextra -Werror -Wpedantic  -o test-lib test-lib.o lib.o
+gcc -std=c89 -g -Wall -Wextra -Werror -Wpedantic -o test-lib test-lib.o lib.o
 gcc -std=c89 -g -Wall -Wextra -Werror -Wpedantic -o main main.c
 
 EXAMPLE USAGE
