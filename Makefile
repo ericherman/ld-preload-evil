@@ -11,9 +11,6 @@ SO_NAME=$(LIB).$(SHAREDEXT)
 
 default: main
 
-test-$(LIB): $(LIB).o test-$(LIB).o
-	$(CC) $(CFLAGS) $(OBJS) -o test-$(LIB) test-$(LIB).o $(LIB).o
-
 $(LIB).o: $(LIB).c
 	$(CC) $(CFLAGS) -c -fPIC $(LIB).c -o $(LIB).o
 
@@ -22,6 +19,9 @@ test-$(LIB).o: test-$(LIB).c
 
 $(SO_NAME): $(LIB).o
 	$(CC) $(CFLAGS) -fPIC $(SHAREDFLAGS) -o $(SO_NAME).1 $(LIB).o
+
+test-$(LIB): $(LIB).o test-$(LIB).o
+	$(CC) $(CFLAGS) -o test-$(LIB) test-$(LIB).o $(LIB).o
 
 main: $(SO_NAME) test-$(LIB)
 	$(CC) $(CFLAGS) -o main main.c
