@@ -1,6 +1,7 @@
 This code is like a workbook for exploring how LD_PRELOAD can be used to
 change the behavior of programs.
 
+
 CONCLUSIONS
 -----------
 So far, I have learned that it is trivial to do "small evil" things,
@@ -17,13 +18,6 @@ and instrumenting behavior, and does not seem to greatly widen risk of a
 system.
 
 
-CONTRIBUTING
-------------
-Patches welcome.
-Especially if you have clear demonstation of a way in which LD_PRELOAD can be
-used by a non-root user to do something which would scare a sysadmin.
-
-
 COMPILING
 ---------
 eric@titan:~/src/ld-preload-evil$ make
@@ -33,6 +27,7 @@ gcc -std=c89 -g -Wall -Wextra -Werror -Wpedantic -c -fPIC test-lib.c -o test-lib
 gcc -std=c89 -g -Wall -Wextra -Werror -Wpedantic -o test-lib test-lib.o lib.o
 gcc -std=c89 -g -Wall -Wextra -Werror -Wpedantic -o main main.c
 
+
 EXAMPLE USAGE
 -------------
 eric@titan:~/src/ld-preload-evil$ ./main
@@ -41,6 +36,7 @@ eric@titan:~/src/ld-preload-evil$ LD_PRELOAD=./lib.so.1 ./main
 Doing evil stuff as UID: 1000, GID: 1000!
 foobar
 eric@titan:~/src/ld-preload-evil$
+
 
 SO FAR, NO ESCALATION FROM A SUID BINARY
 ----------------------------------------
@@ -64,6 +60,14 @@ eric@hinney:~/src/ld-preload-evil$ LD_PRELOAD=./lib.so.1 ./main
 Doing evil stuff as UID: 1000, GID: 1000!
 foobar
 eric@hinney:~/src/ld-preload-evil$
+
+
+CONTRIBUTING
+------------
+Patches welcome; pull-requests welcome.
+
+Especially if you have clear demonstation of a way in which LD_PRELOAD can be
+used by a non-root user to do something which would scare a sysadmin.
 
 
 LICENSE
