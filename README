@@ -1,9 +1,27 @@
-This repo is my (Eric Herman) workbook for exploring how LD_PRELOAD can
-be used to change the behavior of programs.
+This code is like a workbook for exploring how LD_PRELOAD can be used to
+change the behavior of programs.
 
-So far I have learned that it is trivial to do "small evil" things, like
-changing behavior, but I do not yet see how to do "big evil" things,
-such as privilege escalation.
+CONCLUSIONS
+-----------
+So far, I have learned that it is trivial to do "small evil" things,
+like changing behavior, but I do not yet see how to do "big evil"
+things, such as privilege escalation.
+
+I have found various web pages asserting that if effective UID != UID
+that LD_PRELOAD is ignored, but experimentally, I see two kinds of
+results (PRELOAD ignored and SUID ignored); I do not yet how this is
+enforced or where it is enforced.
+
+To me, LD_PRELOAD appears to be a great tool for legitimate modifying
+and instrumenting behavior, and does not seem to greatly widen risk of a
+system.
+
+
+CONTRIBUTING
+------------
+Patches welcome.
+Especially if you have clear demonstation of a way in which LD_PRELOAD can be
+used by a non-root user to do something which would scare a sysadmin.
 
 
 COMPILING
