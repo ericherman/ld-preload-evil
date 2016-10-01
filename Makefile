@@ -45,4 +45,5 @@ check: main
 	LD_PRELOAD=$(PWD)/$(SO_NAME).$(SO_VER).$(SO_PATCH) ./main
 
 clean:
-	rm -f *.o test-$(LIB) $(LIB).$(SHAREDEXT).1 main *~
+	# git clean -dxf
+	rm -f *.o test-$(LIB) $(LIB).$(SHAREDEXT) $(LIB).$(SHAREDEXT).* main *~
