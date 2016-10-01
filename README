@@ -3,7 +3,7 @@ be used to change the behavior of programs.
 
 So far I have learned that it is trivial to do "small evil" things, like
 changing behavior, but I do not yet see how to do "big evil" things,
-such as privlige escallation.
+such as privilege escalation.
 
 
 COMPILING
