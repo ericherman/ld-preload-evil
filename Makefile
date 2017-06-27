@@ -1,7 +1,7 @@
 LIB=lib
 
 CC=gcc
-CFLAGS=-std=c89 -g -Wall -Wextra -Werror -Wpedantic
+CFLAGS=-std=c89 -g -Wall -Wextra -Werror -Wpedantic -fomit-frame-pointer -pipe
 
 SHAREDFLAGS = -shared
 SHAREDEXT = so
